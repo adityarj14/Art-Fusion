@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtFusion</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-weight: 700;
+            color: white;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        body {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            text-decoration: none;
+            background-color: rgb(41, 40, 40);
+
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+            /* Hide scrollbar for Chrome, Safari, and other WebKit browsers */
+        }
+
+        header {
+            /* position: sticky;
+            top: 0;
+            z-index: 1000; */
+            height: 70px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px;
+            border-radius: 12px;
+            background-color: rgb(25, 25, 25);
+            box-shadow: 3px 3px 8px black;
+        }
+
+        header:hover {
+            box-shadow: 1px 0px 8px rgb(217, 211, 211);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-evenly;
+            /* width: 100%; */
+        }
+
+        ul {
+            display: flex;
+            list-style-type: none;
+            justify-content: baseline;
+
+        }
+
+        ul li a {
+            margin: 0 5px;
+            padding: 8px 14px;
+            text-decoration: none;
+            color: rgb(194, 191, 191);
+        }
+
+        ul li a:hover {
+            color: white;
+        }
+
+        .logo h1 {
+            color: white;
+            text-shadow: 1px 2px 6px black;
+
+            /* width: 100px;
+            height: 50px; */
+            /* padding: 5px 10px; */
+        }
+
+        .start {
+            position: relative;
+            right: 6vw;
+        }
+
+        .end {
+            display: flex;
+            position: relative;
+            left: 5vw;
+            /* list-style-type: none; */
+            margin-left: 55px;
+        }
+
+        .end li {
+            margin-left: 5px;
+        }
+
+        .signup {
+            background-color: white;
+            border-radius: 55px;
+            color: black;
+            box-shadow: 3px 3px 8px black;
+            /* margin-left: 20vw; */
+        }
+
+        .login:hover {
+            color: rgb(2, 131, 182);
+        }
+
+        .signup:hover {
+            background-color: rgb(0, 0, 0);
+            color: white;
+            box-shadow: 1px 1px 5px rgb(196, 188, 188);
+        }
+
+
+        main {
+            display: block;
+            height: 90vh;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-wrap: wrap;
+
+        }
+
+        .contentfirst {
+            /* background-color: red; */
+            padding: 2px;
+        }
+
+        .contentfirst h2 {
+            padding-left: 16px;
+            text-transform: capitalize;
+            margin-left: 43vw;
+            text-shadow: 1px 2px 6px black;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            grid-template-rows: auto;
+            align-items: start;
+            overflow: auto;
+            margin: 12px;
+            border-radius: 12px;
+            background-color: rgb(25, 25, 25);
+            box-shadow: 3px 3px 8px black;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 25px;
+            height: 450px;
+            background-color: black;
+            border-radius: 12px;
+        }
+
+        .card:hover {
+            box-shadow: 1px 1px 5px rgb(196, 188, 188);
+        }
+
+        .card img {
+            width: 230px;
+            height: auto;
+            padding: 24px;
+            border: 7px solid;
+            box-shadow: 1px 1px 8px rgb(158, 157, 157);
+        }
+
+        .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: black;
+            border: none;
+            text-decoration: none;
+            padding: 13px 20px;
+            margin: 12px;
+            border-radius: 55px;
+            background-color: whitesmoke;
+            box-shadow: 3px 3px 8px rgb(62, 61, 61);
+        }
+
+        .btn:hover {
+            background-color: rgb(0, 0, 0);
+            color: white;
+            box-shadow: 1px 1px 5px rgb(196, 188, 188);
+        }
+
+
+        .showall {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .showmore {
+            display: flex;
+            font-size: 16px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            margin: 5px;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 55px;
+            background-color: whitesmoke;
+            color: black;
+            box-shadow: 3px 3px 8px black;
+        }
+
+        .showmore:hover {
+            background-color: rgb(0, 0, 0);
+            color: white;
+            box-shadow: 1px 1px 5px rgb(196, 188, 188);
+        }
+
+        .containmid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* background-color: rgb(9, 9, 9); */
+            margin: 12px;
+            border-radius: 12px;
+            height: 50vh;
+            overflow: scroll;
+            background-color: rgb(25, 25, 25);
+            box-shadow: 2px 2px 8px black;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .containmid h2 {
+            padding: 15px 0px 0px 30px;
+            margin-top: 12px;
+            text-shadow: 1px 2px 6px black;
+        }
+
+        .bestseller {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            margin: 15px 23px;
+            height: 300px;
+            width: 90vw;
+            background-color: black;
+            border-radius: 12px;
+        }
+
+        .bestseller h3 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            padding-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .bestsell-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            gap: 40px;
+        }
+
+        .bestsell-group p {
+            font-size: 15px;
+            line-height: 31px;
+        }
+
+        .bestsell-group img {
+            width: 150px;
+            position: relative;
+            top: 20px;
+            border: 5px solid;
+        }
+
+        .bestseller:hover {
+            box-shadow: 1px 1px 5px rgb(196, 188, 188);
+        }
+
+        .btn1 {
+            justify-content: center;
+            align-items: center;
+            color: black;
+            border: none;
+            padding: 13px 20px;
+            border-radius: 55px;
+            background-color: whitesmoke;
+            box-shadow: 3px 3px 8px rgb(62, 61, 61);
+        }
+
+        .btn1:hover {
+            background-color: rgb(44, 43, 43);
+            color: white;
+            box-shadow: 1px 2px 5px rgb(196, 188, 188);
+        }
+
+        .rate {
+            display: flex;
+            position: relative;
+            top: 10px;
+            left: 10px;
+            justify-content: center;
+            text-shadow: 1px 2px 6px black;;
+
+        }
+
+        /* content start here */
+        .contentbottom {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 32px 12px;
+            border-radius: 12px;
+            height: 50vh;
+            border-radius: 12px;
+            background-color: rgb(25, 25, 25);
+            box-shadow: 2px 2px 8px black;
+        }
+
+        .inside {
+            width: 100%;
+            height: 35vh;
+            max-width: 450px;
+            padding: 16px;
+            margin: 22px;
+            border-radius: 8px;
+            background-color: rgb(0, 0, 0);
+        }
+
+        .inside:hover {
+            box-shadow: 1px 1px 5px rgb(196, 188, 188);
+        }
+
+        .inside h3 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .paraimg {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+
+        .paraimg p {
+            flex: 1;
+            font-size: 1rem;
+            line-height: 21px;
+            color: rgb(132, 128, 128);
+        }
+
+        .paraimg img {
+            max-width: 100px;
+            height: auto;
+            border-radius: 4px;
+            border: 3px solid;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+            color: #FFD700;
+            /* Gold color for stars */
+        }
+
+        .stars {
+            font-size: 1.2rem;
+            color: #FFD700;
+        }
+
+        .rating-value {
+            font-size: 1rem;
+            color: #a4a2a2;
+        }
+
+
+        /* Media Queries */
+        /* @media screen and (max-width: 1024px) {
+            header {
+                flex-direction: column;
+                height: auto;
+                padding: 10px;
+            }
+
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .logo h1 {
+                font-size: 24px;
+            }
+
+            .start {
+                right: 0;
+            }
+
+            .end {
+                left: 0;
+                margin-left: 0;
+            }
+
+            main {
+                height: auto;
+            }
+
+            .cards {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            .containmid {
+                height: auto;
+            }
+
+            .bestsell-group {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            header {
+                flex-direction: column;
+                margin: 10px;
+            }
+
+            .cards {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .card img {
+                width: 200px;
+            }
+
+            .bestseller {
+                flex-direction: column;
+            }
+
+            .bestsell-group img {
+                width: 120px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            header {
+                flex-direction: column;
+                margin: 5px;
+            }
+
+            .cards {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .card img {
+                width: 180px;
+            }
+
+            .bestsell-group img {
+                width: 100px;
+            }
+
+            .btn,
+            .btn1 {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+        } */
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <!-- <img class="logo" src="logo2.png" alt="logo"> -->
+            <h1>Art Fusion</h1>
+        </div>
+        <nav class="nav">
+            <ul class="start">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Offers</a></li>
+                <li><a href="#">Sell Now</a></li>
+
+            </ul>
+            <ul class="end">
+                <li><a href="#" class="login">Log In</a></li>
+                <li><a href="#" class="signup">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="contentfirst">
+            <h2>Featured Artworks</h2>
+            <div class="cards">
+                <div class="card item-1">
+                    <img src="Hanumanji2.jpg" alt="">
+                    <a class="btn" href="#">Learn More</a>
+                </div>
+                <div class="card item-2">
+                    <img src="lordshiva.jpg" alt="">
+                    <a class="btn" href="#">Learn More</a>
+                </div>
+                <div class="card item-3">
+                    <img src="maadurga.jpg" alt="">
+                    <a class="btn" href="#">Learn More</a>
+
+                </div>
+                <div class="card item-4">
+                    <img src="ranveer.jpg" alt="">
+                    <a class="btn" href="#">Learn More</a>
+
+                </div>
+            </div>
+        </div>
+        <div class="showall">
+            <button class="showmore">Explore All</button>
+        </div>
+        <div class="containmid">
+            <h2>Best Sellers</h2>
+            <div class="bestseller">
+                <div class="bestsell-group">
+                    <h3>Lord Hanuman</h3>
+                    <p>
+                        Masterpiece of Devotion: Stunning, highly detailed color pencil drawing of Lord Hanuman. <br>
+                        Creation Time: Over 15 hours dedicated to bringing this artwork to life. <br>
+                        Realistic & Breathtaking: Captures the divine strength and grace of Lord Hanuman in a highly
+                        realistic form. <br>
+                        Perfect for Any Space: Ideal for adding a touch of spirituality to your home or office. <br>
+                        One-of-a-Kind: A unique expression of faith and craftsmanship. <br>
+                        Collectible: Don’t miss the chance to make this extraordinary artwork a part of your collection.
+                    </p>
+                    <img class="bshanu" src="Hanumanji2.jpg" alt="">
+                </div>
+                <button class="btn1">Buy Now</button>
+            </div>
+            <div class="bestseller">
+                <div class="bestsell-group">
+                    <h3>Lord Shiva</h3>
+                    <p>
+                        Masterpiece of Devotion: Stunning, highly detailed color pencil drawing of Lord Hanuman. <br>
+                        Creation Time: Over 15 hours dedicated to bringing this artwork to life. <br>
+                        Realistic & Breathtaking: Captures the divine strength and grace of Lord Hanuman in a highly
+                        realistic form. <br>
+                        Perfect for Any Space: Ideal for adding a touch of spirituality to your home or office. <br>
+                        One-of-a-Kind: A unique expression of faith and craftsmanship. <br>
+                        Collectible: Don’t miss the chance to make this extraordinary artwork a part of your collection.
+                    </p>
+                    <img class="bshanu" src="lordshiva.jpg" alt="">
+                </div>
+                <button class="btn1">Buy Now</button>
+            </div>
+            <div class="bestseller">
+                <div class="bestsell-group">
+                    <h3>Maa Durga</h3>
+                    <p>
+                        Masterpiece of Devotion: Stunning, highly detailed color pencil drawing of Lord Hanuman. <br>
+                        Creation Time: Over 15 hours dedicated to bringing this artwork to life. <br>
+                        Realistic & Breathtaking: Captures the divine strength and grace of Lord Hanuman in a highly
+                        realistic form. <br>
+                        Perfect for Any Space: Ideal for adding a touch of spirituality to your home or office. <br>
+                        One-of-a-Kind: A unique expression of faith and craftsmanship. <br>
+                        Collectible: Don’t miss the chance to make this extraordinary artwork a part of your collection.
+                    </p>
+                    <img class="bshanu" src="maadurga.jpg" alt="">
+                </div>
+                <button class="btn1">Buy Now</button>
+            </div>
+            <div class="bestseller">
+                <div class="bestsell-group">
+                    <h3>Lord Hanuman</h3>
+                    <p>
+                        Masterpiece of Devotion: Stunning, highly detailed color pencil drawing of Lord Hanuman. <br>
+                        Creation Time: Over 15 hours dedicated to bringing this artwork to life. <br>
+                        Realistic & Breathtaking: Captures the divine strength and grace of Lord Hanuman in a highly
+                        realistic form. <br>
+                        Perfect for Any Space: Ideal for adding a touch of spirituality to your home or office. <br>
+                        One-of-a-Kind: A unique expression of faith and craftsmanship. <br>
+                        Collectible: Don’t miss the chance to make this extraordinary artwork a part of your collection.
+                    </p>
+                    <img class="bshanu" src="Hanumanji2.jpg" alt="">
+                </div>
+                <button class="btn1">Buy Now</button>
+            </div>
+            <div class="bestseller">
+                <div class="bestsell-group">
+                    <h3>Lord Shiva</h3>
+                    <p>
+                        Masterpiece of Devotion: Stunning, highly detailed color pencil drawing of Lord Hanuman. <br>
+                        Creation Time: Over 15 hours dedicated to bringing this artwork to life. <br>
+                        Realistic & Breathtaking: Captures the divine strength and grace of Lord Hanuman in a highly
+                        realistic form. <br>
+                        Perfect for Any Space: Ideal for adding a touch of spirituality to your home or office. <br>
+                        One-of-a-Kind: A unique expression of faith and craftsmanship. <br>
+                        Collectible: Don’t miss the chance to make this extraordinary artwork a part of your collection.
+                    </p>
+                    <img class="bshanu" src="lordshiva.jpg" alt="">
+                </div>
+                <button class="btn1">Buy Now</button>
+            </div>
+            <div class="bestseller">
+                <div class="bestsell-group">
+                    <h3>Maa Durga</h3>
+                    <p>
+                        Masterpiece of Devotion: Stunning, highly detailed color pencil drawing of Lord Hanuman. <br>
+                        Creation Time: Over 15 hours dedicated to bringing this artwork to life. <br>
+                        Realistic & Breathtaking: Captures the divine strength and grace of Lord Hanuman in a highly
+                        realistic form. <br>
+                        Perfect for Any Space: Ideal for adding a touch of spirituality to your home or office. <br>
+                        One-of-a-Kind: A unique expression of faith and craftsmanship. <br>
+                        Collectible: Don’t miss the chance to make this extraordinary artwork a part of your collection.
+                    </p>
+                    <img class="bshanu" src="maadurga.jpg" alt="">
+                </div>
+                <button class="btn1">Buy Now</button>
+            </div>
+        </div>
+        <div class="rate">
+            <h2>Ratings</h2>
+        </div>
+        <div class="contentbottom">
+            <div class="inside">
+                <h3>Ritik Raj</h3>
+                <div class="paraimg">
+                    <p>I absolutely loved the artwork! The attention to detail and vibrant colors brought the piece to
+                        life. <br> It's truly a masterpiece that I’m proud to display in my home. Thank you for your
+                        incredible work!</p>
+                    <img src="lordshiva.jpg" alt="Card Image">
+                </div>
+                <div class="rating">
+                    <span class="stars">★★★★★</span>
+                    <span class="rating-value">4.9</span>
+                </div>
+            </div>
+            <div class="inside">
+                <h3>Rahul kumar</h3>
+                <div class="paraimg">
+                    <p>I absolutely loved the artwork! The attention to detail and vibrant colors brought the piece to
+                        life. <br> It's truly a masterpiece that I’m proud to display in my home. Thank you for your
+                        incredible work!</p>
+                    <img src="Hanumanji2.jpg" alt="Card Image">
+                </div>
+                <div class="rating">
+                    <span class="stars">★★★★★</span>
+                    <span class="rating-value">4.9</span>
+                </div>
+            </div>
+            <div class="inside">
+                <h3>Aryan Raj</h3>
+                <div class="paraimg">
+                    <p>I absolutely loved the artwork! The attention to detail and vibrant colors brought the piece to
+                        life. <br> It's truly a masterpiece that I’m proud to display in my home. Thank you for your
+                        incredible work!</p>
+                    <img src="maadurga.jpg" alt="Card Image">
+                </div>
+                <div class="rating">
+                    <span class="stars">★★★★★</span>
+                    <span class="rating-value">4.9</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>
